@@ -1,7 +1,9 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import mongoose from "mongoose";
+import dotenv from "dotenv";
+import conn from "./utils/db.js";
+dotenv.config();
 
 const app = express();
 
@@ -16,7 +18,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
+  conn();
   console.log(`server listening on port ${PORT}`);
 });

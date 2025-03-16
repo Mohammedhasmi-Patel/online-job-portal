@@ -1,4 +1,3 @@
-import e from "express";
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -12,10 +11,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    fullname: {
-      type: String,
-      required: true,
-    },
+
     phoneNumber: {
       type: Number,
       required: true,
@@ -55,4 +51,5 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-export default User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+export default User;

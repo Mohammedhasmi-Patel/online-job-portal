@@ -3,9 +3,11 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import conn from "./utils/db.js";
+import userRouter from "./routes/user.route.js";
 dotenv.config();
 
 const app = express();
+// routers obj
 
 // middleware
 app.use(express.json());
@@ -17,6 +19,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// api routers
+app.use("/api/users", userRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
